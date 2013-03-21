@@ -29,9 +29,11 @@ module.exports = function (grunt) {
 					requirejs.tools.useLib(function (require) {
 						rjsConfig = require('transform').modifyConfig(file, function (config) {
 							// if 'baseUrl' is specified, rebase the components
-							config.baseUrl && _.forOwn(data, function(val, key, obj){
-								obj[key] = path.relative(config.baseUrl, val);
-							});
+							if(config.baseUrl){
+								_.forOwn(data, function(val, key, obj){
+									obj[key] = path.relative(config.baseUrl, val);
+								});
+							}
 
 							_.extend(config.paths, data);
 							return config;
