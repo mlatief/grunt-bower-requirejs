@@ -24,7 +24,7 @@ module.exports = function (grunt) {
 				files: {
 					'tmp/config.js': 'test/fixtures/config.js',
 					'tmp/global-config.js': 'test/fixtures/global-config.js',
-					'tmp/config-baseurl.js': 'test/fixtures/config-baseurl.js'
+					'tmp/baseurl-config.js': 'test/fixtures/baseurl-config.js'
 				}
 			}
 		},
@@ -41,8 +41,8 @@ module.exports = function (grunt) {
 			global: {
 				rjsConfig: 'tmp/global-config.js'
 			},
-			standardBaseUrl: {
-				rjsConfig: 'tmp/config-baseurl.js'
+			baseUrl: {
+				rjsConfig: 'tmp/baseurl-config.js'
 			}
 		}
 	});
