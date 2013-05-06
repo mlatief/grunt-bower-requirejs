@@ -30,7 +30,14 @@ module.exports = function (grunt) {
 							// make paths relative to baseUrl if specified
 							if (config.baseUrl) {
 								_.forOwn(data, function (val, key, obj) {
-									obj[key] = path.relative(config.baseUrl, val);
+									// handle array of multiple paths in the component main property
+									if(_.isArray(val)) {
+										_.forEach(val, function (inval, idx, array) {
+											array[idx] = path.relative(config.baseUrl, inval);
+										});
+									} else {
+										obj[key] = path.relative(config.baseUrl, val);
+									}
 								});
 							}
 
